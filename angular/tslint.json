@@ -74,6 +74,8 @@
 		"indent": [
 			true,
 			"tabs"
-		]
+		],
+		"no-trailing-whitespace": false,
+		"variable-name": false
 	}
 }

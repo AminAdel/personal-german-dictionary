@@ -5,25 +5,19 @@
 		<div class="col col-8 search">
 			<div class="form">
 				<div class="chars">
-					<div class="char">ä</div>
-					<div class="char">ö</div>
-					<div class="char">ü</div>
-					<div class="char">ß</div>
+					<div class="char" (click)="on_add_char('ä')">ä</div>
+					<div class="char" (click)="on_add_char('ö')">ö</div>
+					<div class="char" (click)="on_add_char('ü')">ü</div>
+					<div class="char" (click)="on_add_char('ß')">ß</div>
 				</div>
 				<div class="field_con">
-					<input class="field" type="text" placeholder="search">
+					<input class="field" type="text" placeholder="search" [(ngModel)]="phrase">
 				</div>
-				<div class="submit">search</div>
+				<div class="submit" (click)="onSearch()">search</div>
 			</div>
 			<div class="results">
 				<div class="ul">
-					<div class="li">li</div>
-					<div class="li">li</div>
-					<div class="li">li</div>
-					<div class="li">li</div>
-					<div class="li">li</div>
-					<div class="li">li</div>
-					<div class="li">li</div>
+					<div class="li" *ngFor="let result of results; let i=index" (click)="on_result_click(i)">li</div>
 				</div>
 			</div>
 		</div><!-- /search -->
@@ -35,7 +29,7 @@
 			<div class="field_group">
 				<div class="label">Word or Phrase :</div>
 				<div class="field_con">
-					<input class="field phrase" type="text">
+					<input class="field phrase" type="text" [(ngModel)]="phrase">
 				</div>
 			</div>
 			
@@ -79,7 +73,8 @@
 			</div>
 			
 			<div class="submit_con">
-				<div class="submit">submit</div>
+				<div class="submit create" *ngIf="form === 'create'" (click)="onCreate()">Create</div>
+				<div class="submit edit" *ngIf="form === 'edit'" (click)="onEdit()">Edit</div>
 			</div>
 			
 		</div><!-- /create_edit -->
