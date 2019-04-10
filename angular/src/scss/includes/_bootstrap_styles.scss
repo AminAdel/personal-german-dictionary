@@ -1,0 +1,87 @@
+//---> Create   :   1397.11.24
+//---> Finish   :   --
+//---> Update   :   --
+/*****************************/
+
+.container {
+	margin-right: auto;
+	margin-left: auto;
+	padding-right: 15px;
+	padding-left: 15px;
+	width: 1140px;
+}
+.container-fluid {
+	padding-right: 15px;
+	padding-left: 15px;
+	width: 100%;
+}
+
+.row {
+	display: flex;
+	flex-wrap: wrap;
+	margin-right: -15px;
+	margin-left: -15px;
+	
+	&.no-gutters {
+		margin-right: 0;
+		margin-left: 0;
+		
+		> .col {
+			padding-right: 0px;
+			padding-left: 0px;
+		}
+	}
+	
+	&.mg-half {
+		margin-right: -7px;
+		margin-left: -7px;
+		
+		> .col {
+			padding-right: 7px;
+			padding-left: 7px;
+		}
+	}
+}
+
+.col {
+	padding-right: 15px;
+	padding-left: 15px;
+	position: relative;
+	
+	&.mr-auto {
+		margin-right: auto;
+	}
+	
+	&.col-1 { width: calc(100% / 12); }
+	&.col-2 { width: calc(100% / 6); }
+	&.col-3 { width: calc(100% / 4); }
+	&.col-4 { width: calc(100% / 3); }
+	&.col-5 { width: calc(100% / 12 * 5); }
+	&.col-6 { width: calc(100% / 2); }
+	&.col-7 { width: calc(100% / 12 * 7); }
+	&.col-8 { width: calc(100% / 12 * 8); }
+	&.col-9 { width: calc(100% / 12 * 9); }
+	&.col-10 { width: calc(100% / 12 * 10); }
+	&.col-11 { width: calc(100% / 12 * 11); }
+	&.col-12 { width: 100% }
+	&.col-auto {
+		flex: 0 0 auto;
+		width: auto;
+		max-width: none;
+	}
+}
+
+.d-flex { display: flex; }
+.flex-nowrap { flex-wrap: nowrap }
+.align-items-center { align-items: center; }
+
+.mt-3 { margin-top: 15px }
+.mt-4 { margin-top: 20px }
+.mr-2 { margin-right: 10px; }
+.mr-auto { margin-right: auto !important; }
+.ml-2 { margin-left: 10px; }
+.pr-3 { padding-right: 15px }
+.pl-3 { padding-left: 15px }
+
+.text-center { text-align: center }
+

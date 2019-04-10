@@ -1,0 +1,145 @@
+@import "~src/scss/includes/colors";
+
+.container {
+	padding: 50px 0;
+	min-height: 100vh;
+	background-color: #fff;
+	box-shadow: 0 0 10px rgba(0, 0, 0, 0.3);
+	
+	> .row {
+		display: flex;
+		
+		> .col {
+			padding: 0 30px;
+			
+			&.col-4 {
+				width: calc(100% / 3);
+			}
+			&.col-8 {
+				width: calc(200% / 3);
+			}
+			
+			&.search {
+				
+				> .form {
+					display: flex;
+					flex-wrap: wrap;
+					
+					> .chars {
+						display: flex;
+						justify-content: center;
+						margin-bottom: 10px;
+						width: 100%;
+						
+						> .char {
+							display: flex;
+							align-items: center;
+							justify-content: center;
+							margin-right: 10px;
+							width: 30px;
+							height: 30px;
+							text-align: center;
+							color: #fff;
+							font-size: 16px;
+							background-color: $color_green_400;
+							cursor: pointer;
+							transition: all 250ms;
+							
+							&:hover {
+								background-color: $color_green_300;
+							}
+						}
+					}
+					
+					> .field_con {
+						width: calc(100% - 100px);
+					}
+					
+					> .submit {
+						display: flex;
+						align-items: center;
+						justify-content: center;
+						margin-left: 10px;
+						width: 90px;
+						color: #fff;
+						background-color: $color_green_500;
+						cursor: pointer;
+						transition: all 250ms;
+						
+						&:hover {
+							background-color: $color_green_300;
+						}
+					}
+				}
+				
+				> .results {
+					margin-top: 30px;
+					padding-top: 30px;
+					border-top: 3px dashed #ddd;
+					
+					> .ul {
+						display: flex;
+						flex-wrap: wrap;
+						
+						> .li {
+							display: flex;
+							align-items: center;
+							margin-bottom: 10px;
+							padding: 0 15px;
+							width: calc(50% - 5px);
+							height: 40px;
+							font-family: "Courier New", tahoma, arial, sans-serif;
+							font-size: 14px;
+							background-color: #fff;
+							border: 1px solid #ddd;
+							
+							&:nth-child(2n) {
+								margin-left: 10px;
+							}
+						}
+					}
+				}
+			}
+			
+			&.create_edit {
+				border-left: 1px solid #ddd;
+				
+				.field_group {
+					margin-bottom: 15px;
+					
+					.label {
+						margin-bottom: 5px;
+						color: #555;
+					}
+					
+					.field {
+						
+						&.examples {
+							height: auto;
+						}
+					}
+				}
+				
+				.submit_con {
+					display: flex;
+					justify-content: center;
+					
+					> .submit {
+						display: flex;
+						align-items: center;
+						justify-content: center;
+						padding: 5px 20px;
+						color: #fff;
+						background-color: $color_green_500;
+						transition: all 250ms;
+						cursor: pointer;
+						
+						&:hover {
+							background-color: $color_green_300;
+						}
+					}
+				}
+			}
+		}
+	}
+}

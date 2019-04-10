@@ -1,0 +1,86 @@
+*, ::after, ::before {
+	box-sizing: border-box;
+}
+html {
+	//direction: rtl;
+}
+body, div, section, aside, nav, header, footer {
+	position: relative;
+}
+body {
+	margin: 0;
+	min-width: 1200px;
+	//text-align: left;
+	font-family: tahoma, arial, sans-serif;
+	font-size: 13px;
+	background-color: #f7f7f7;
+	
+	&.no-scroll {
+		overflow: hidden;
+	}
+}
+body + * {
+	display: none;
+}
+input, textarea, select {
+	outline: none;
+	font-family: tahoma, arial, sans-serif;
+}
+input[type=checkbox],
+input[type=radio] {
+	vertical-align: middle;
+}
+img {
+	max-width: 100%;
+	vertical-align: middle;
+}
+table {
+	font-size: inherit;
+	border-collapse: collapse;
+}
+a {
+	color: inherit;
+	text-decoration: none;
+	
+	&:hover {
+		color: inherit;
+		text-decoration: none;
+	}
+}
+h6, .h6 { font-size: 10px }
+h5, .h5 { font-size: 12px }
+h4, .h4 { font-size: 14px }
+h3, .h3 { font-size: 16px }
+h2, .h2 { font-size: 20px }
+h1, .h1 { font-size: 24px }
+
+// =============================
+
+#mainContent {
+	margin-top: 15px;
+	padding-bottom: 50px;
+	min-height: 100vh;
+	
+	> .container {
+		
+		> .row {
+			
+			> .col {
+				margin-bottom: 15px;
+				
+				&.col_ads {
+					
+					> .img_con {
+						padding: 50px 0;
+						color: #fff;
+						text-align: center;
+						background-color: #aaa;
+						border-radius: 5px;
+						overflow: hidden;
+						box-shadow: 0 1px 5px 0 #aaa;
+					}
+				}
+			}
+		}
+	}
+}
