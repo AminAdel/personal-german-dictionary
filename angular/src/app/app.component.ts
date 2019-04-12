@@ -26,7 +26,103 @@ export class AppComponent implements OnInit {
 			group: 'A2',
 			meaning: 'meaning2',
 			examples: 'dasdads2'
-		}
+		},
+		{
+			id: 1,
+			phrase: 'some phrase',
+			type: 'name',
+			group: 'A1',
+			meaning: 'meaning',
+			examples: 'dasdads'
+		},
+		{
+			id: 2,
+			phrase: 'some phrase2',
+			type: 'name2',
+			group: 'A2',
+			meaning: 'meaning2',
+			examples: 'dasdads2'
+		},
+		{
+			id: 1,
+			phrase: 'some phrase',
+			type: 'name',
+			group: 'A1',
+			meaning: 'meaning',
+			examples: 'dasdads'
+		},
+		{
+			id: 2,
+			phrase: 'some phrase2',
+			type: 'name2',
+			group: 'A2',
+			meaning: 'meaning2',
+			examples: 'dasdads2'
+		},
+		{
+			id: 1,
+			phrase: 'some phrase',
+			type: 'name',
+			group: 'A1',
+			meaning: 'meaning',
+			examples: 'dasdads'
+		},
+		{
+			id: 2,
+			phrase: 'some phrase2',
+			type: 'name2',
+			group: 'A2',
+			meaning: 'meaning2',
+			examples: 'dasdads2'
+		},
+		{
+			id: 1,
+			phrase: 'some phrase',
+			type: 'name',
+			group: 'A1',
+			meaning: 'meaning',
+			examples: 'dasdads'
+		},
+		{
+			id: 2,
+			phrase: 'some phrase2',
+			type: 'name2',
+			group: 'A2',
+			meaning: 'meaning2',
+			examples: 'dasdads2'
+		},
+		{
+			id: 1,
+			phrase: 'some phrase',
+			type: 'name',
+			group: 'A1',
+			meaning: 'meaning',
+			examples: 'dasdads'
+		},
+		{
+			id: 2,
+			phrase: 'some phrase2',
+			type: 'name2',
+			group: 'A2',
+			meaning: 'meaning2',
+			examples: 'dasdads2'
+		},
+		{
+			id: 1,
+			phrase: 'some phrase',
+			type: 'name',
+			group: 'A1',
+			meaning: 'meaning',
+			examples: 'dasdads'
+		},
+		{
+			id: 2,
+			phrase: 'some phrase2',
+			type: 'name2',
+			group: 'A2',
+			meaning: 'meaning2',
+			examples: 'dasdads2'
+		},
 	];
 	form = 'create'; // create || edit
 	letters = [

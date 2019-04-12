@@ -20,6 +20,7 @@
 			}
 			
 			&.main {
+				height: calc(100vh - 100px);
 				
 				> .chars {
 					display: flex;
@@ -91,53 +92,41 @@
 				}
 				
 				> .results {
+					display: flex;
 					margin-top: 30px;
 					padding-top: 30px;
+					max-height: 100%;
 					border-top: 3px dashed #ddd;
 					
 					> .ul {
-						display: flex;
-						flex-wrap: wrap;
+						padding-right: 10px;
+						width: 50%;
+						height: calc(100vh - 305px);
+						overflow-y: scroll;
 						
 						> .li {
 							display: flex;
 							align-items: center;
 							margin-bottom: 10px;
 							padding: 0 15px;
-							width: calc(50% - 5px);
 							height: 40px;
 							font-family: "Courier New", tahoma, arial, sans-serif;
 							font-size: 14px;
 							background-color: #fff;
 							border: 1px solid #ddd;
-							
-							&:nth-child(2n) {
-								margin-left: 10px;
-							}
 						}
+					}
+					
+					> .li_info {
+						padding-left: 10px;
+						width: 50%;
 					}
 				}
 			}
 			
 			&.sidebar {
-				min-height: calc(100vh - 100px);
+				height: calc(100vh - 100px);
 				border-left: 1px solid #ddd;
-				
-				.field_group {
-					margin-bottom: 15px;
-					
-					.label {
-						margin-bottom: 5px;
-						color: #555;
-					}
-					
-					.field {
-						
-						&.examples {
-							height: auto;
-						}
-					}
-				}
 				
 				.submit_con {
 					display: flex;
@@ -165,6 +154,25 @@
 							&:hover {
 								background-color: $color_blue_300;
 							}
+						}
+					}
+				}
+			}
+			
+			.form.create_edit {
+				
+				.field_group {
+					margin-bottom: 15px;
+					
+					.label {
+						margin-bottom: 5px;
+						color: #555;
+					}
+					
+					.field {
+						
+						&.examples {
+							height: auto;
 						}
 					}
 				}
