@@ -1,6 +1,6 @@
 @import "~src/scss/includes/colors";
 
-.container {
+.container-fluid {
 	padding: 50px 0;
 	min-height: 100vh;
 	background-color: #fff;
@@ -19,48 +19,66 @@
 				width: calc(200% / 3);
 			}
 			
-			&.search {
+			&.main {
+				
+				> .chars {
+					display: flex;
+					justify-content: center;
+					margin-bottom: 30px;
+					padding-bottom: 30px;
+					width: 100%;
+					direction: ltr;
+					border-bottom: 3px dashed #ddd;
+					
+					> .char {
+						display: flex;
+						align-items: center;
+						justify-content: center;
+						margin-right: 10px;
+						width: 30px;
+						height: 30px;
+						direction: ltr;
+						text-align: center;
+						color: #fff;
+						font-size: 16px;
+						background-color: $color_green_400;
+						//cursor: pointer;
+						transition: all 250ms;
+						
+						&:hover {
+							background-color: $color_green_300;
+						}
+					}
+					
+					> .copy {
+						display: flex;
+						align-items: center;
+						margin-left: 30px;
+						opacity: 0;
+						&.show {
+							opacity: 1;
+						}
+					}
+				}
 				
 				> .form {
 					display: flex;
 					flex-wrap: wrap;
-					
-					> .chars {
-						display: flex;
-						justify-content: center;
-						margin-bottom: 10px;
-						width: 100%;
-						
-						> .char {
-							display: flex;
-							align-items: center;
-							justify-content: center;
-							margin-right: 10px;
-							width: 30px;
-							height: 30px;
-							text-align: center;
-							color: #fff;
-							font-size: 16px;
-							background-color: $color_green_400;
-							cursor: pointer;
-							transition: all 250ms;
-							
-							&:hover {
-								background-color: $color_green_300;
-							}
-						}
-					}
+					margin-right: -10px;
+					margin-left: -10px;
 					
 					> .field_con {
-						width: calc(100% - 100px);
+						padding: 0 10px;
+						&.phrase { width: calc(100% - 100px); }
+						&.letter, &.type, &.group { width: calc(100% / 3); margin-bottom: 15px; }
 					}
 					
 					> .submit {
 						display: flex;
 						align-items: center;
 						justify-content: center;
-						margin-left: 10px;
-						width: 90px;
+						margin-left: 5px;
+						width: 85px;
 						color: #fff;
 						background-color: $color_green_500;
 						cursor: pointer;
@@ -101,7 +119,8 @@
 				}
 			}
 			
-			&.create_edit {
+			&.sidebar {
+				min-height: calc(100vh - 100px);
 				border-left: 1px solid #ddd;
 				
 				.field_group {
@@ -128,14 +147,24 @@
 						display: flex;
 						align-items: center;
 						justify-content: center;
+						margin: 0 10px;
 						padding: 5px 20px;
 						color: #fff;
 						background-color: $color_green_500;
 						transition: all 250ms;
 						cursor: pointer;
 						
-						&:hover {
-							background-color: $color_green_300;
+						&.create {
+							background-color: $color_green_500;
+							&:hover {
+								background-color: $color_green_300;
+							}
+						}
+						&.edit {
+							background-color: $color_blue_500;
+							&:hover {
+								background-color: $color_blue_300;
+							}
 						}
 					}
 				}

@@ -1,30 +1,58 @@
-<div class="container">
+<div class="container-fluid">
+	
 	<div class="row no-gutters">
 		
 		<!-- search -->
-		<div class="col col-8 search">
+		<div class="col col-8 main">
+			
+			<div class="chars">
+				<div class="char" (click)="copyToClipboard('Ä')">Ä</div>
+				<div class="char" (click)="copyToClipboard('ä')">ä</div>
+				<div class="char" (click)="copyToClipboard('Ö')">Ö</div>
+				<div class="char" (click)="copyToClipboard('ö')">ö</div>
+				<div class="char" (click)="copyToClipboard('Ü')">Ü</div>
+				<div class="char" (click)="copyToClipboard('ü')">ü</div>
+				<div class="char" (click)="copyToClipboard('ß')">ß</div>
+				<div class="copy" [ngClass]="{show: showCopied}">Copied to Clipboard</div>
+			</div>
+			
 			<div class="form">
-				<div class="chars">
-					<div class="char" (click)="on_add_char('ä')">ä</div>
-					<div class="char" (click)="on_add_char('ö')">ö</div>
-					<div class="char" (click)="on_add_char('ü')">ü</div>
-					<div class="char" (click)="on_add_char('ß')">ß</div>
+				<div class="field_con letter">
+					<select name="letter" class="field" id="search_letter">
+						<option value="0">All Letters</option>
+						<option value="{{ letter.value }}" *ngFor="let letter of letters">{{ letter.label }}</option>
+					</select>
 				</div>
-				<div class="field_con">
-					<input class="field" type="text" placeholder="search" [(ngModel)]="phrase">
+				<div class="field_con type">
+					<select name="type" class="field" id="search_type">
+						<option value="0">All Types</option>
+						<option value="{{ type.value }}" *ngFor="let type of types">{{ type.label }}</option>
+					</select>
+				</div>
+				<div class="field_con group">
+					<select name="group" class="field" id="search_group">
+						<option value="0">All Groups</option>
+						<option value="{{ group.value }}" *ngFor="let group of groups">{{ group.label }}</option>
+					</select>
+				</div>
+				<div class="field_con phrase">
+					<input class="field" type="text" name="phrase" placeholder="word or phrase" [(ngModel)]="phrase">
 				</div>
 				<div class="submit" (click)="onSearch()">search</div>
 			</div>
+			
 			<div class="results">
 				<div class="ul">
-					<div class="li" *ngFor="let result of results; let i=index" (click)="on_result_click(i)">li</div>
+					<div class="li" *ngFor="let result of results; let i=index" (click)="onResultClick(i)">li</div>
 				</div>
 			</div>
+			
 		</div><!-- /search -->
 		
 		
+		
 		<!-- create_edit -->
-		<div class="col col-4 create_edit">
+		<div class="col col-4 sidebar">
 			
 			<div class="field_group">
 				<div class="label">Word or Phrase :</div>
@@ -37,9 +65,7 @@
 				<div class="label">Type :</div>
 				<div class="field_con">
 					<select name="type" class="field type">
-						<option value="name">name</option>
-						<option value="name">verb</option>
-						<option value="name">adjective</option>
+						<option value="{{ type.value }}" *ngFor="let type of types">{{ type.label }}</option>
 					</select>
 				</div>
 			</div>
@@ -48,12 +74,15 @@
 				<div class="label">Group :</div>
 				<div class="field_con">
 					<select name="group" class="field group">
-						<option value="name">A1</option>
-						<option value="name">A2</option>
-						<option value="name">B1</option>
-						<option value="name">B2</option>
-						<option value="name">C1</option>
-						<option value="name">C2</option>
+						<option value="name">Basic 1</option>
+						<option value="name">Basic 2</option>
+						<option value="name">Basic 3</option>
+						<option value="name">Intermediate 1</option>
+						<option value="name">Intermediate 2</option>
+						<option value="name">Intermediate 3</option>
+						<option value="name">Advanced 1</option>
+						<option value="name">Advanced 2</option>
+						<option value="name">Advanced 3</option>
 					</select>
 				</div>
 			</div>
@@ -73,11 +102,11 @@
 			</div>
 			
 			<div class="submit_con">
-				<div class="submit create" *ngIf="form === 'create'" (click)="onCreate()">Create</div>
+				<div class="submit create" (click)="onCreate()">Create</div>
 				<div class="submit edit" *ngIf="form === 'edit'" (click)="onEdit()">Edit</div>
 			</div>
 			
 		</div><!-- /create_edit -->
 		
-	</div>
+	</div><!-- /row -->
 </div>
