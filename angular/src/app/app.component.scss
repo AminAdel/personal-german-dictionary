@@ -62,7 +62,7 @@
 					}
 				}
 				
-				> .form {
+				> .form_search {
 					display: flex;
 					flex-wrap: wrap;
 					margin-right: -10px;
@@ -120,6 +120,45 @@
 					> .li_info {
 						padding-left: 10px;
 						width: 50%;
+						
+						> .form_edit {
+							
+							.field_group {
+								margin-bottom: 15px;
+								
+								.label {
+									margin-bottom: 5px;
+									color: #555;
+								}
+								
+								.field {
+									
+									&.examples {
+										height: auto;
+									}
+								}
+							}
+							
+							.submit_con {
+								display: flex;
+								justify-content: center;
+								
+								> .submit {
+									display: flex;
+									align-items: center;
+									justify-content: center;
+									margin: 0 10px;
+									padding: 5px 20px;
+									color: #fff;
+									background-color: $color_blue_500;
+									transition: all 250ms;
+									cursor: pointer;
+									&:hover {
+										background-color: $color_blue_300;
+									}
+								}
+							}
+						}
 					}
 				}
 			}
@@ -128,51 +167,41 @@
 				height: calc(100vh - 100px);
 				border-left: 1px solid #ddd;
 				
-				.submit_con {
-					display: flex;
-					justify-content: center;
+				> .form_create {
 					
-					> .submit {
-						display: flex;
-						align-items: center;
-						justify-content: center;
-						margin: 0 10px;
-						padding: 5px 20px;
-						color: #fff;
-						background-color: $color_green_500;
-						transition: all 250ms;
-						cursor: pointer;
+					.field_group {
+						margin-bottom: 15px;
 						
-						&.create {
+						.label {
+							margin-bottom: 5px;
+							color: #555;
+						}
+						
+						.field {
+							
+							&.examples {
+								height: auto;
+							}
+						}
+					}
+					
+					.submit_con {
+						display: flex;
+						justify-content: center;
+						
+						> .submit {
+							display: flex;
+							align-items: center;
+							justify-content: center;
+							margin: 0 10px;
+							padding: 5px 20px;
+							color: #fff;
 							background-color: $color_green_500;
+							transition: all 250ms;
+							cursor: pointer;
 							&:hover {
 								background-color: $color_green_300;
 							}
-						}
-						&.edit {
-							background-color: $color_blue_500;
-							&:hover {
-								background-color: $color_blue_300;
-							}
-						}
-					}
-				}
-			}
-			
-			.form.create_edit {
-				
-				.field_group {
-					margin-bottom: 15px;
-					
-					.label {
-						margin-bottom: 5px;
-						color: #555;
-					}
-					
-					.field {
-						
-						&.examples {
-							height: auto;
 						}
 					}
 				}

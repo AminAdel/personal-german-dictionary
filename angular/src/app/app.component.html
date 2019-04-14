@@ -16,7 +16,7 @@
 				<div class="copy" [ngClass]="{show: showCopied}">Copied to Clipboard</div>
 			</div>
 			
-			<div class="form">
+			<div class="form_search">
 				<div class="field_con letter">
 					<select name="letter" class="field" id="search_letter">
 						<option value="0">All Letters</option>
@@ -46,11 +46,11 @@
 					<div class="li" *ngFor="let result of results; let i=index" (click)="onResultClick(i)">li</div>
 				</div>
 				<div class="li_info">
-					<div class="form create_edit">
+					<div class="form_edit">
 						<div class="field_group">
 							<div class="label">Word or Phrase :</div>
 							<div class="field_con">
-								<input class="field phrase" type="text" [(ngModel)]="phrase">
+								<input class="field phrase" type="text">
 							</div>
 						</div>
 						
@@ -67,15 +67,7 @@
 							<div class="label">Group :</div>
 							<div class="field_con">
 								<select name="group" class="field group">
-									<option value="name">Basic 1</option>
-									<option value="name">Basic 2</option>
-									<option value="name">Basic 3</option>
-									<option value="name">Intermediate 1</option>
-									<option value="name">Intermediate 2</option>
-									<option value="name">Intermediate 3</option>
-									<option value="name">Advanced 1</option>
-									<option value="name">Advanced 2</option>
-									<option value="name">Advanced 3</option>
+									<option value="{{ group.value }}" *ngFor="let group of groups">{{ group.label }}</option>
 								</select>
 							</div>
 						</div>
@@ -95,8 +87,7 @@
 						</div>
 						
 						<div class="submit_con">
-							<div class="submit create" (click)="onCreate()">Create</div>
-							<div class="submit edit" *ngIf="form === 'edit'" (click)="onEdit()">Edit</div>
+							<div class="submit" (click)="onEdit()">Edit</div>
 						</div>
 					</div>
 				</div>
@@ -109,7 +100,7 @@
 		<!-- create_edit -->
 		<div class="col col-4 sidebar">
 			
-			<div class="form create_edit">
+			<div class="form_create">
 				<div class="field_group">
 					<div class="label">Word or Phrase :</div>
 					<div class="field_con">
@@ -130,15 +121,7 @@
 					<div class="label">Group :</div>
 					<div class="field_con">
 						<select name="group" class="field group">
-							<option value="name">Basic 1</option>
-							<option value="name">Basic 2</option>
-							<option value="name">Basic 3</option>
-							<option value="name">Intermediate 1</option>
-							<option value="name">Intermediate 2</option>
-							<option value="name">Intermediate 3</option>
-							<option value="name">Advanced 1</option>
-							<option value="name">Advanced 2</option>
-							<option value="name">Advanced 3</option>
+							<option value="{{ group.value }}" *ngFor="let group of groups">{{ group.label }}</option>
 						</select>
 					</div>
 				</div>
@@ -158,8 +141,7 @@
 				</div>
 				
 				<div class="submit_con">
-					<div class="submit create" (click)="onCreate()">Create</div>
-					<div class="submit edit" *ngIf="form === 'edit'" (click)="onEdit()">Edit</div>
+					<div class="submit" (click)="onCreate()">Create</div>
 				</div>
 			</div>
 			

@@ -124,7 +124,6 @@ export class AppComponent implements OnInit {
 			examples: 'dasdads2'
 		},
 	];
-	form = 'create'; // create || edit
 	letters = [
 		{value: 'a', label: 'A'},
 		{value: 'b', label: 'B'},
@@ -190,12 +189,10 @@ export class AppComponent implements OnInit {
 	
 	onResultClick(li_index) {
 		console.log(li_index);
-		this.form = 'edit';
 	}
 	
 	onSearch() {
 		console.log('search');
-		this.form = 'create';
 	}
 	
 	onCreate() {
