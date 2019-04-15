@@ -20,6 +20,7 @@
 			}
 			
 			&.main {
+				width: calc(100% - 300px);
 				height: calc(100vh - 100px);
 				
 				> .chars {
@@ -99,8 +100,10 @@
 					border-top: 3px dashed #ddd;
 					
 					> .ul {
+						display: flex;
+						flex-wrap: wrap;
 						padding-right: 10px;
-						width: 50%;
+						width: calc(100% - 300px);
 						height: calc(100vh - 305px);
 						overflow-y: scroll;
 						
@@ -109,17 +112,26 @@
 							align-items: center;
 							margin-bottom: 10px;
 							padding: 0 15px;
+							width: calc(50% - 5px);
 							height: 40px;
 							font-family: "Courier New", tahoma, arial, sans-serif;
 							font-size: 14px;
 							background-color: #fff;
 							border: 1px solid #ddd;
+							&:nth-child(2n+1) { margin-right: 5px; }
+							&:nth-child(2n) { margin-left: 5px; }
+							
+							&:hover, &.active {
+								color: #fff;
+								background-color: $color_green_400;
+								border: 0;
+							}
 						}
 					}
 					
 					> .li_info {
 						padding-left: 10px;
-						width: 50%;
+						width: 300px;
 						
 						> .form_edit {
 							
@@ -164,6 +176,7 @@
 			}
 			
 			&.sidebar {
+				width: 300px;
 				height: calc(100vh - 100px);
 				border-left: 1px solid #ddd;
 				

@@ -9,7 +9,6 @@ import { Component, OnInit, ViewEncapsulation } from '@angular/core';
 export class AppComponent implements OnInit {
 	
 	showCopied = false;
-	phrase = '';
 	results = [
 		{
 			id: 1,
@@ -177,6 +176,25 @@ export class AppComponent implements OnInit {
 		{value: 'advanced_2', label: 'Advanced 2'},
 		{value: 'advanced_3', label: 'Advanced 3'},
 	];
+	
+	// ==================================================
+	
+	searchCreate_phrase = '';
+	search_letter = 0;
+	search_type = 0;
+	search_group = 0;
+	
+	create_type = 0;
+	create_group = 0;
+	create_meaning = '';
+	create_examples = '';
+	
+	edit_phrase = 0;
+	edit_type = 0;
+	edit_group = 0;
+	edit_meaning = '';
+	edit_examples = '';
+	
 	// ==================================================
 	
 	constructor() {}
@@ -217,5 +235,5 @@ export class AppComponent implements OnInit {
 		setTimeout(() => {
 			this.showCopied = false;
 		}, 2000);
-	}
+	} // done
 }
