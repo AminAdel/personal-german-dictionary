@@ -190,14 +190,18 @@ export class AppComponent implements OnInit {
 	search_group = 0;
 	
 	create_type = 0;
+	create_type_new = '';
 	create_group = 0;
+	create_group_new = '';
 	create_meaning = '';
 	create_examples = '';
 	
 	edit_id: 0;
 	edit_phrase = 0;
 	edit_type = 0;
+	edit_type_new = '';
 	edit_group = 0;
+	edit_group_new = '';
 	edit_meaning = '';
 	edit_examples = '';
 	

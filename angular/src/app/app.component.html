@@ -17,6 +17,9 @@
 			</div>
 			
 			<div class="form_search">
+				<div class="field_con phrase">
+					<input class="field" type="text" name="phrase" placeholder="word or phrase" [(ngModel)]="searchCreate_phrase">
+				</div>
 				<div class="field_con letter">
 					<select name="letter" class="field" id="search_letter" [(ngModel)]="search_letter">
 						<option value="0">All Letters</option>
@@ -34,9 +37,6 @@
 						<option value="0">All Groups</option>
 						<option value="{{ group.value }}" *ngFor="let group of groups">{{ group.label }}</option>
 					</select>
-				</div>
-				<div class="field_con phrase">
-					<input class="field" type="text" name="phrase" placeholder="word or phrase" [(ngModel)]="searchCreate_phrase">
 				</div>
 				<div class="submit" (click)="onSearch()">search</div>
 			</div>
@@ -61,6 +61,7 @@
 									<option value="{{ type.value }}" *ngFor="let type of types">{{ type.label }}</option>
 									<option value="_create_new_">-- create new type --</option>
 								</select>
+								<input class="field type_new" type="text" *ngIf="edit_type === '_create_new_'" [(ngModel)]="edit_type_new" placeholder="Create New Type">
 							</div>
 						</div>
 						
@@ -71,6 +72,7 @@
 									<option value="{{ group.value }}" *ngFor="let group of groups">{{ group.label }}</option>
 									<option value="_create_new_">-- create new group --</option>
 								</select>
+								<input class="field group_new" type="text" *ngIf="edit_group === '_create_new_'" [(ngModel)]="edit_group_new" placeholder="Create New Group">
 							</div>
 						</div>
 						
@@ -117,6 +119,7 @@
 							<option value="{{ type.value }}" *ngFor="let type of types">{{ type.label }}</option>
 							<option value="_create_new_">-- create new type --</option>
 						</select>
+						<input class="field type_new" type="text" *ngIf="create_type === '_create_new_'" [(ngModel)]="create_type_new" placeholder="Create New Type">
 					</div>
 				</div>
 				
@@ -127,6 +130,7 @@
 							<option value="{{ group.value }}" *ngFor="let group of groups">{{ group.label }}</option>
 							<option value="_create_new_">-- create new group --</option>
 						</select>
+						<input class="field group_new" type="text" *ngIf="create_group === '_create_new_'" [(ngModel)]="create_group_new" placeholder="Create New Group">
 					</div>
 				</div>
 				
