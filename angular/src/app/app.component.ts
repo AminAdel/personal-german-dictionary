@@ -1,4 +1,5 @@
 import { Component, OnInit, ViewEncapsulation } from '@angular/core';
+import { HttpClient } from '@angular/common/http';
 
 @Component({
 	selector: 'app-root',
@@ -7,6 +8,10 @@ import { Component, OnInit, ViewEncapsulation } from '@angular/core';
 	encapsulation: ViewEncapsulation.None
 })
 export class AppComponent implements OnInit {
+	
+	api_base_url = 'http://127.0.0.1/_AminAdel/personal-dictionary-german/laravel/public/api/';
+	
+	// ==================================================
 	
 	showCopied = false;
 	results = [
@@ -189,6 +194,7 @@ export class AppComponent implements OnInit {
 	create_meaning = '';
 	create_examples = '';
 	
+	edit_id: 0;
 	edit_phrase = 0;
 	edit_type = 0;
 	edit_group = 0;
@@ -197,9 +203,20 @@ export class AppComponent implements OnInit {
 	
 	// ==================================================
 	
-	constructor() {}
+	constructor(private http: HttpClient) {}
 	
 	ngOnInit(): void {
+		// load types
+		// load groups
+	}
+	
+	// ==================================================
+	
+	load_types() {
+		
+	}
+	
+	load_groups() {
 		
 	}
 	
@@ -207,6 +224,7 @@ export class AppComponent implements OnInit {
 	
 	onResultClick(li_index) {
 		console.log(li_index);
+		// todo set edit_id
 	}
 	
 	onSearch() {
@@ -215,10 +233,51 @@ export class AppComponent implements OnInit {
 	
 	onCreate() {
 		console.log('create');
+		let data = {
+			phrase: this.searchCreate_phrase,
+			type: this.create_type,
+			group: this.create_group,
+			meaning: this.create_meaning,
+			examples: this.create_examples
+		};
+		this.http.post(this.api_base_url + 'create', data).subscribe(
+			(resp) => {
+				console.log(resp);
+			},
+			(error) => {
+				console.log(error);
+			},
+			() => {
+				console.log('complete');
+				this.load_types();
+				this.load_groups();
+			},
+		);
 	}
 	
 	onEdit() {
 		console.log('edit');
+		let data = {
+			id: this.edit_id,
+			phrase: this.edit_phrase,
+			type: this.edit_type,
+			group: this.edit_group,
+			meaning: this.edit_meaning,
+			examples: this.edit_examples
+		};
+		this.http.post(this.api_base_url + 'edit', data).subscribe(
+			(resp) => {
+				console.log(resp);
+			},
+			(error) => {
+				console.log(error);
+			},
+			() => {
+				console.log('complete');
+				this.load_types();
+				this.load_groups();
+			},
+		);
 	}
 	
 	// ==================================================
