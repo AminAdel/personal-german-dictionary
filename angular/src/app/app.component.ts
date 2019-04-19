@@ -9,125 +9,12 @@ import { HttpClient } from '@angular/common/http';
 })
 export class AppComponent implements OnInit {
 	
-	api_base_url = 'http://127.0.0.1/_AminAdel/personal-dictionary-german/laravel/public/api/';
+	// api_base_url = 'http://127.0.0.1/_AminAdel/personal-dictionary-german/laravel/public/api/'; // work
+	api_base_url = 'http://localhost/_github/personal-dictionary-german/laravel/public/api/'; // home
 	
 	// ==================================================
 	
 	showCopied = false;
-	results = [
-		{
-			id: 1,
-			phrase: 'some phrase',
-			type: 'name',
-			group: 'A1',
-			meaning: 'meaning',
-			examples: 'dasdads'
-		},
-		{
-			id: 2,
-			phrase: 'some phrase2',
-			type: 'name2',
-			group: 'A2',
-			meaning: 'meaning2',
-			examples: 'dasdads2'
-		},
-		{
-			id: 1,
-			phrase: 'some phrase',
-			type: 'name',
-			group: 'A1',
-			meaning: 'meaning',
-			examples: 'dasdads'
-		},
-		{
-			id: 2,
-			phrase: 'some phrase2',
-			type: 'name2',
-			group: 'A2',
-			meaning: 'meaning2',
-			examples: 'dasdads2'
-		},
-		{
-			id: 1,
-			phrase: 'some phrase',
-			type: 'name',
-			group: 'A1',
-			meaning: 'meaning',
-			examples: 'dasdads'
-		},
-		{
-			id: 2,
-			phrase: 'some phrase2',
-			type: 'name2',
-			group: 'A2',
-			meaning: 'meaning2',
-			examples: 'dasdads2'
-		},
-		{
-			id: 1,
-			phrase: 'some phrase',
-			type: 'name',
-			group: 'A1',
-			meaning: 'meaning',
-			examples: 'dasdads'
-		},
-		{
-			id: 2,
-			phrase: 'some phrase2',
-			type: 'name2',
-			group: 'A2',
-			meaning: 'meaning2',
-			examples: 'dasdads2'
-		},
-		{
-			id: 1,
-			phrase: 'some phrase',
-			type: 'name',
-			group: 'A1',
-			meaning: 'meaning',
-			examples: 'dasdads'
-		},
-		{
-			id: 2,
-			phrase: 'some phrase2',
-			type: 'name2',
-			group: 'A2',
-			meaning: 'meaning2',
-			examples: 'dasdads2'
-		},
-		{
-			id: 1,
-			phrase: 'some phrase',
-			type: 'name',
-			group: 'A1',
-			meaning: 'meaning',
-			examples: 'dasdads'
-		},
-		{
-			id: 2,
-			phrase: 'some phrase2',
-			type: 'name2',
-			group: 'A2',
-			meaning: 'meaning2',
-			examples: 'dasdads2'
-		},
-		{
-			id: 1,
-			phrase: 'some phrase',
-			type: 'name',
-			group: 'A1',
-			meaning: 'meaning',
-			examples: 'dasdads'
-		},
-		{
-			id: 2,
-			phrase: 'some phrase2',
-			type: 'name2',
-			group: 'A2',
-			meaning: 'meaning2',
-			examples: 'dasdads2'
-		},
-	];
 	letters = [
 		{value: 'a', label: 'A'},
 		{value: 'b', label: 'B'},
@@ -161,46 +48,33 @@ export class AppComponent implements OnInit {
 		{value: 'ü', label: 'Ü'},
 		{value: 'ß', label: 'ß'},
 	];
-	types = [
-		{value: 'name', label: 'Name'},
-		{value: 'verb', label: 'Verb'},
-		{value: 'adjective', label: 'Adjective'},
-		{value: 'number', label: 'Number'},
-	];
-	groups = [
-		{value: 'basic_1', label: 'Basic 1'},
-		{value: 'basic_2', label: 'Basic 2'},
-		{value: 'basic_3', label: 'Basic 3'},
-		{value: 'basic_4', label: 'Basic 4'},
-		{value: 'basic_5', label: 'Basic 5'},
-		{value: 'intermediate_1', label: 'Intermediate 1'},
-		{value: 'intermediate_2', label: 'Intermediate 2'},
-		{value: 'intermediate_3', label: 'Intermediate 3'},
-		{value: 'intermediate_4', label: 'Intermediate 4'},
-		{value: 'advanced_1', label: 'Advanced 1'},
-		{value: 'advanced_2', label: 'Advanced 2'},
-		{value: 'advanced_3', label: 'Advanced 3'},
-	];
+	results = [];
+	types = [];
+	groups = [];
 	
 	// ==================================================
 	
-	searchCreate_phrase = '';
-	search_letter = 0;
-	search_type = 0;
-	search_group = 0;
+	search_phrase = '';
+	search_letter = '0';
+	search_article = '0';
+	search_type = '0';
+	search_group = '0';
 	
-	create_type = 0;
+	create_phrase = '';
+	create_article = 'null';
+	create_type = '';
 	create_type_new = '';
-	create_group = 0;
+	create_group = '';
 	create_group_new = '';
 	create_meaning = '';
 	create_examples = '';
 	
 	edit_id: 0;
-	edit_phrase = 0;
-	edit_type = 0;
+	edit_phrase = '';
+	edit_article = 'null';
+	edit_type = '';
 	edit_type_new = '';
-	edit_group = 0;
+	edit_group = '';
 	edit_group_new = '';
 	edit_meaning = '';
 	edit_examples = '';
@@ -210,18 +84,39 @@ export class AppComponent implements OnInit {
 	constructor(private http: HttpClient) {}
 	
 	ngOnInit(): void {
-		// load types
-		// load groups
+		this.load_types();
+		this.load_groups();
+		this.load_latest();
 	}
 	
 	// ==================================================
 	
 	load_types() {
-		
-	}
+		this.http.get(this.api_base_url + 'type').subscribe(
+			(data: {}[]) => {
+				this.types = data;
+			},
+			(error) => { console.log(error); }
+		);
+	} // done
 	
 	load_groups() {
-		
+		this.http.get(this.api_base_url + 'group').subscribe(
+			(data: {}[]) => {
+				this.groups = data;
+			},
+			(error) => { console.log(error); }
+		);
+	} // done
+	
+	load_latest() {
+		this.http.get(this.api_base_url + 'latest').subscribe(
+			(data: {}[]) => {
+				// console.log(data);
+				this.results = data;
+			},
+			(error) => { console.log(error); }
+		);
 	}
 	
 	// ==================================================
@@ -236,26 +131,27 @@ export class AppComponent implements OnInit {
 	}
 	
 	onCreate() {
-		console.log('create');
 		let data = {
-			phrase: this.searchCreate_phrase,
+			phrase: this.create_phrase,
+			article: this.create_article,
 			type: this.create_type,
+			type_new: this.create_type_new,
 			group: this.create_group,
+			group_new: this.create_group_new,
 			meaning: this.create_meaning,
 			examples: this.create_examples
 		};
+		
 		this.http.post(this.api_base_url + 'create', data).subscribe(
 			(resp) => {
-				console.log(resp);
+				if (data.type === '_create_new_') { this.load_types(); }
+				if (data.group === '_create_new_') { this.load_groups(); }
+				this.load_latest();
 			},
 			(error) => {
 				console.log(error);
 			},
-			() => {
-				console.log('complete');
-				this.load_types();
-				this.load_groups();
-			},
+			() => {},
 		);
 	}
 	

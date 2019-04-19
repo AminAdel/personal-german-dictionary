@@ -18,24 +18,32 @@
 			
 			<div class="form_search">
 				<div class="field_con phrase">
-					<input class="field" type="text" name="phrase" placeholder="word or phrase" [(ngModel)]="searchCreate_phrase">
+					<input class="field" type="text" name="phrase" placeholder="word or phrase" [(ngModel)]="search_phrase">
 				</div>
 				<div class="field_con letter">
 					<select name="letter" class="field" id="search_letter" [(ngModel)]="search_letter">
-						<option value="0">All Letters</option>
+						<option value="0" selected>All Letters</option>
 						<option value="{{ letter.value }}" *ngFor="let letter of letters">{{ letter.label }}</option>
+					</select>
+				</div>
+				<div class="field_con article">
+					<select name="type" class="field" id="search_article" [(ngModel)]="search_article">
+						<option value="0" selected>All Articles</option>
+						<option value="der">der</option>
+						<option value="die">die</option>
+						<option value="das">das</option>
 					</select>
 				</div>
 				<div class="field_con type">
 					<select name="type" class="field" id="search_type" [(ngModel)]="search_type">
-						<option value="0">All Types</option>
-						<option value="{{ type.value }}" *ngFor="let type of types">{{ type.label }}</option>
+						<option value="0" selected>All Types</option>
+						<option value="{{ type.id }}" *ngFor="let type of types">{{ type.label }}</option>
 					</select>
 				</div>
 				<div class="field_con group">
 					<select name="group" class="field" id="search_group" [(ngModel)]="search_group">
-						<option value="0">All Groups</option>
-						<option value="{{ group.value }}" *ngFor="let group of groups">{{ group.label }}</option>
+						<option value="0" selected>All Groups</option>
+						<option value="{{ group.id }}" *ngFor="let group of groups">{{ group.label }}</option>
 					</select>
 				</div>
 				<div class="submit" (click)="onSearch()">search</div>
@@ -43,7 +51,10 @@
 			
 			<div class="results">
 				<div class="ul">
-					<div class="li" *ngFor="let result of results; let i=index" (click)="onResultClick(i)">li</div>
+					<div class="li" *ngFor="let result of results; let i=index" (click)="onResultClick(i)">
+						<ng-container *ngIf="result.article">{{ result.article + ' ' + result.word_phrase }}</ng-container>
+						<ng-container *ngIf="!result.article">{{ result.word_phrase }}</ng-container>
+					</div>
 				</div>
 				<div class="li_info">
 					<div class="form_edit">
@@ -53,43 +64,49 @@
 								<input class="field phrase" type="text" [(ngModel)]="edit_phrase">
 							</div>
 						</div>
-						
+						<div class="field_group">
+							<div class="label">Article :</div>
+							<div class="field_con">
+								<select class="field article" [(ngModel)]="edit_article">
+									<option value="null" selected>--</option>
+									<option value="der">der</option>
+									<option value="die">die</option>
+									<option value="das">das</option>
+								</select>
+							</div>
+						</div>
 						<div class="field_group">
 							<div class="label">Type :</div>
 							<div class="field_con">
-								<select name="type" class="field type" [(ngModel)]="edit_type">
-									<option value="{{ type.value }}" *ngFor="let type of types">{{ type.label }}</option>
+								<select class="field type" [(ngModel)]="edit_type">
+									<option value="{{ type.id }}" *ngFor="let type of types">{{ type.label }}</option>
 									<option value="_create_new_">-- create new type --</option>
 								</select>
 								<input class="field type_new" type="text" *ngIf="edit_type === '_create_new_'" [(ngModel)]="edit_type_new" placeholder="Create New Type">
 							</div>
 						</div>
-						
 						<div class="field_group">
 							<div class="label">Group :</div>
 							<div class="field_con">
-								<select name="group" class="field group" [(ngModel)]="edit_group">
-									<option value="{{ group.value }}" *ngFor="let group of groups">{{ group.label }}</option>
+								<select class="field group" [(ngModel)]="edit_group">
+									<option value="{{ group.id }}" *ngFor="let group of groups">{{ group.label }}</option>
 									<option value="_create_new_">-- create new group --</option>
 								</select>
 								<input class="field group_new" type="text" *ngIf="edit_group === '_create_new_'" [(ngModel)]="edit_group_new" placeholder="Create New Group">
 							</div>
 						</div>
-						
 						<div class="field_group">
 							<div class="label">Meaning :</div>
 							<div class="field_con">
 								<input class="field meaning" type="text" [(ngModel)]="edit_meaning">
 							</div>
 						</div>
-						
 						<div class="field_group">
 							<div class="label">Examples (separate by enter) :</div>
 							<div class="field_con">
 								<textarea class="field examples" rows="4" [(ngModel)]="edit_examples"></textarea>
 							</div>
 						</div>
-						
 						<div class="submit_con">
 							<div class="submit" (click)="onEdit()">Edit</div>
 						</div>
@@ -100,7 +117,6 @@
 		</div><!-- /search -->
 		
 		
-		
 		<!-- create_edit -->
 		<div class="col sidebar">
 			
@@ -108,46 +124,52 @@
 				<div class="field_group">
 					<div class="label">Word or Phrase :</div>
 					<div class="field_con">
-						<input class="field phrase" type="text" [(ngModel)]="searchCreate_phrase">
+						<input class="field phrase" type="text" [(ngModel)]="create_phrase">
 					</div>
 				</div>
-				
+				<div class="field_group">
+					<div class="label">Article :</div>
+					<div class="field_con">
+						<select class="field article" [(ngModel)]="create_article">
+							<option value="null" selected>--</option>
+							<option value="der">der</option>
+							<option value="die">die</option>
+							<option value="das">das</option>
+						</select>
+					</div>
+				</div>
 				<div class="field_group">
 					<div class="label">Type :</div>
 					<div class="field_con">
-						<select name="type" class="field type" [(ngModel)]="create_type">
-							<option value="{{ type.value }}" *ngFor="let type of types">{{ type.label }}</option>
+						<select class="field type" [(ngModel)]="create_type">
+							<option value="{{ type.id }}" *ngFor="let type of types">{{ type.label }}</option>
 							<option value="_create_new_">-- create new type --</option>
 						</select>
 						<input class="field type_new" type="text" *ngIf="create_type === '_create_new_'" [(ngModel)]="create_type_new" placeholder="Create New Type">
 					</div>
 				</div>
-				
 				<div class="field_group">
 					<div class="label">Group :</div>
 					<div class="field_con">
-						<select name="group" class="field group" [(ngModel)]="create_group">
-							<option value="{{ group.value }}" *ngFor="let group of groups">{{ group.label }}</option>
+						<select class="field group" [(ngModel)]="create_group">
+							<option value="{{ group.id }}" *ngFor="let group of groups">{{ group.label }}</option>
 							<option value="_create_new_">-- create new group --</option>
 						</select>
 						<input class="field group_new" type="text" *ngIf="create_group === '_create_new_'" [(ngModel)]="create_group_new" placeholder="Create New Group">
 					</div>
 				</div>
-				
 				<div class="field_group">
 					<div class="label">Meaning :</div>
 					<div class="field_con">
 						<input class="field meaning" type="text" [(ngModel)]="create_meaning">
 					</div>
 				</div>
-				
 				<div class="field_group">
 					<div class="label">Examples (separate by enter) :</div>
 					<div class="field_con">
 						<textarea class="field examples" rows="4" [(ngModel)]="create_examples"></textarea>
 					</div>
 				</div>
-				
 				<div class="submit_con">
 					<div class="submit" (click)="onCreate()">Create</div>
 				</div>
