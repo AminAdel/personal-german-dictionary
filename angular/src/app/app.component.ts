@@ -69,7 +69,7 @@ export class AppComponent implements OnInit {
 	create_meaning = '';
 	create_examples = '';
 	
-	edit_id: 0;
+	edit_id: null;
 	edit_phrase = '';
 	edit_article = 'null';
 	edit_type = '';
@@ -86,7 +86,7 @@ export class AppComponent implements OnInit {
 	ngOnInit(): void {
 		this.load_types();
 		this.load_groups();
-		this.load_latest();
+		this.search();
 	}
 	
 	// ==================================================
@@ -109,26 +109,36 @@ export class AppComponent implements OnInit {
 		);
 	} // done
 	
-	load_latest() {
-		this.http.get(this.api_base_url + 'latest').subscribe(
+	search() {
+		this.http.post(this.api_base_url + 'search', {
+			phrase: this.search_phrase,
+			letter: this.search_letter,
+			article: this.search_article,
+			type: this.search_type,
+			group: this.search_group
+		}).subscribe(
 			(data: {}[]) => {
-				// console.log(data);
 				this.results = data;
 			},
 			(error) => { console.log(error); }
 		);
-	}
+	} // done
 	
 	// ==================================================
 	
 	onResultClick(li_index) {
-		console.log(li_index);
-		// todo set edit_id
-	}
+		this.edit_id = this.results[li_index].id;
+		this.edit_phrase = this.results[li_index].word_phrase;
+		this.edit_article = this.results[li_index].article ? this.results[li_index].article : 'null';
+		this.edit_type = this.results[li_index].type_id;
+		this.edit_group = this.results[li_index].group_id;
+		this.edit_meaning = this.results[li_index].meaning;
+		this.edit_examples = this.results[li_index].examples;
+	} // done
 	
 	onSearch() {
-		console.log('search');
-	}
+		this.search();
+	} // done
 	
 	onCreate() {
 		let data = {
@@ -146,39 +156,54 @@ export class AppComponent implements OnInit {
 			(resp) => {
 				if (data.type === '_create_new_') { this.load_types(); }
 				if (data.group === '_create_new_') { this.load_groups(); }
-				this.load_latest();
+				this.search();
 			},
 			(error) => {
 				console.log(error);
 			},
 			() => {},
 		);
-	}
+	} // done
 	
 	onEdit() {
-		console.log('edit');
 		let data = {
 			id: this.edit_id,
 			phrase: this.edit_phrase,
+			article: this.edit_article,
 			type: this.edit_type,
+			type_new: this.edit_type_new,
 			group: this.edit_group,
+			group_new: this.edit_group_new,
 			meaning: this.edit_meaning,
 			examples: this.edit_examples
 		};
 		this.http.post(this.api_base_url + 'edit', data).subscribe(
 			(resp) => {
-				console.log(resp);
+				if (data.type === '_create_new_') { this.load_types(); }
+				if (data.group === '_create_new_') { this.load_groups(); }
+				this.search();
+				this.reset_edit();
 			},
 			(error) => {
 				console.log(error);
 			},
 			() => {
-				console.log('complete');
-				this.load_types();
-				this.load_groups();
+				// console.log('complete');
 			},
 		);
 	}
+	
+	reset_edit() {
+		this.edit_id = null;
+		this.edit_phrase = '';
+		this.edit_article = 'null';
+		this.edit_type = '';
+		this.edit_type_new = '';
+		this.edit_group = '';
+		this.edit_group_new = '';
+		this.edit_meaning = '';
+		this.edit_examples = '';
+	} // done
 	
 	// ==================================================
 	

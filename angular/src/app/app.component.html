@@ -18,16 +18,16 @@
 			
 			<div class="form_search">
 				<div class="field_con phrase">
-					<input class="field" type="text" name="phrase" placeholder="word or phrase" [(ngModel)]="search_phrase">
+					<input class="field" type="text" placeholder="word or phrase" [(ngModel)]="search_phrase" (change)="onSearch()">
 				</div>
 				<div class="field_con letter">
-					<select name="letter" class="field" id="search_letter" [(ngModel)]="search_letter">
+					<select class="field" id="search_letter" [(ngModel)]="search_letter" (change)="onSearch()">
 						<option value="0" selected>All Letters</option>
 						<option value="{{ letter.value }}" *ngFor="let letter of letters">{{ letter.label }}</option>
 					</select>
 				</div>
 				<div class="field_con article">
-					<select name="type" class="field" id="search_article" [(ngModel)]="search_article">
+					<select class="field" id="search_article" [(ngModel)]="search_article" (change)="onSearch()">
 						<option value="0" selected>All Articles</option>
 						<option value="der">der</option>
 						<option value="die">die</option>
@@ -35,23 +35,22 @@
 					</select>
 				</div>
 				<div class="field_con type">
-					<select name="type" class="field" id="search_type" [(ngModel)]="search_type">
+					<select class="field" id="search_type" [(ngModel)]="search_type" (change)="onSearch()">
 						<option value="0" selected>All Types</option>
 						<option value="{{ type.id }}" *ngFor="let type of types">{{ type.label }}</option>
 					</select>
 				</div>
 				<div class="field_con group">
-					<select name="group" class="field" id="search_group" [(ngModel)]="search_group">
+					<select class="field" id="search_group" [(ngModel)]="search_group" (change)="onSearch()">
 						<option value="0" selected>All Groups</option>
 						<option value="{{ group.id }}" *ngFor="let group of groups">{{ group.label }}</option>
 					</select>
 				</div>
-				<div class="submit" (click)="onSearch()">search</div>
 			</div>
 			
 			<div class="results">
 				<div class="ul">
-					<div class="li" *ngFor="let result of results; let i=index" (click)="onResultClick(i)">
+					<div class="li" [ngClass]="{active: edit_id === result.id}" *ngFor="let result of results; let i=index" (click)="onResultClick(i)">
 						<ng-container *ngIf="result.article">{{ result.article + ' ' + result.word_phrase }}</ng-container>
 						<ng-container *ngIf="!result.article">{{ result.word_phrase }}</ng-container>
 					</div>

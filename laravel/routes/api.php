@@ -18,7 +18,7 @@ header('Content-Type: application/json');
 
 Route::get('/type', 'ProjectController@get_types');
 Route::get('/group', 'ProjectController@get_groups');
-Route::get('/latest', 'ProjectController@get_latest');
-Route::get('/search', 'ProjectController@search');
+Route::post('/search', 'ProjectController@search');
 
 Route::post('/create', 'ProjectController@create');
+Route::post('/edit', 'ProjectController@edit');

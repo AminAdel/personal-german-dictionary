@@ -5,10 +5,9 @@
       <change beforePath="$PROJECT_DIR$/../angular/src/app/app.component.html" beforeDir="false" afterPath="$PROJECT_DIR$/../angular/src/app/app.component.html" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/../angular/src/app/app.component.scss" beforeDir="false" afterPath="$PROJECT_DIR$/../angular/src/app/app.component.scss" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/../angular/src/app/app.component.ts" beforeDir="false" afterPath="$PROJECT_DIR$/../angular/src/app/app.component.ts" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/.env" beforeDir="false" afterPath="$PROJECT_DIR$/.env" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/config/database.php" beforeDir="false" afterPath="$PROJECT_DIR$/config/database.php" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/app/Http/Controllers/ProjectController.php" beforeDir="false" afterPath="$PROJECT_DIR$/app/Http/Controllers/ProjectController.php" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/routes/api.php" beforeDir="false" afterPath="$PROJECT_DIR$/routes/api.php" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/routes/web.php" beforeDir="false" afterPath="$PROJECT_DIR$/routes/web.php" afterDir="false" />
     </list>
     <option name="EXCLUDED_CONVERTED_TO_IGNORED" value="true" />
     <option name="SHOW_DIALOG" value="false" />
@@ -24,8 +23,8 @@
       <file pinned="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/routes/api.php">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="540">
-              <caret line="20" column="51" selection-start-line="20" selection-start-column="51" selection-end-line="20" selection-end-column="51" />
+            <state relative-caret-position="621">
+              <caret line="23" column="41" lean-forward="true" selection-start-line="23" selection-start-column="41" selection-end-line="23" selection-end-column="41" />
             </state>
           </provider>
         </entry>
@@ -33,12 +32,16 @@
       <file pinned="false" current-in-tab="true">
         <entry file="file://$PROJECT_DIR$/app/Http/Controllers/ProjectController.php">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="161">
-              <caret line="55" column="28" lean-forward="true" selection-start-line="55" selection-start-column="28" selection-end-line="55" selection-end-column="28" />
+            <state relative-caret-position="594">
+              <caret line="99" column="13" lean-forward="true" selection-start-line="99" selection-start-column="13" selection-end-line="99" selection-end-column="13" />
               <folding>
                 <element signature="e#124#252#0#PHP" />
-                <element signature="e#256#391#0#PHP" />
-                <element signature="e#395#648#0#PHP" />
+                <element signature="e#264#399#0#PHP" />
+                <element signature="e#411#1229#0#PHP" />
+                <element signature="e#1233#1928#0#PHP" />
+                <element signature="e#1875#2642#0#PHP" />
+                <element signature="e#2688#2714#0#PHP" />
+                <element signature="e#2967#3242#0#PHP" />
               </folding>
             </state>
           </provider>
@@ -238,11 +241,13 @@
       <workItem from="1555578165982" duration="626000" />
       <workItem from="1555609729244" duration="5558000" />
       <workItem from="1555704408467" duration="1514000" />
+      <workItem from="1555792558209" duration="2355000" />
+      <workItem from="1555838067370" duration="4492000" />
     </task>
     <servers />
   </component>
   <component name="TimeTrackingManager">
-    <option name="totallyTimeSpent" value="11167000" />
+    <option name="totallyTimeSpent" value="18014000" />
   </component>
   <component name="ToolWindowManager">
     <frame x="-8" y="-8" width="1296" height="1000" extended-state="6" />
@@ -311,19 +316,23 @@
     </entry>
     <entry file="file://$PROJECT_DIR$/routes/api.php">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="540">
-          <caret line="20" column="51" selection-start-line="20" selection-start-column="51" selection-end-line="20" selection-end-column="51" />
+        <state relative-caret-position="621">
+          <caret line="23" column="41" lean-forward="true" selection-start-line="23" selection-start-column="41" selection-end-line="23" selection-end-column="41" />
         </state>
       </provider>
     </entry>
     <entry file="file://$PROJECT_DIR$/app/Http/Controllers/ProjectController.php">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="161">
-          <caret line="55" column="28" lean-forward="true" selection-start-line="55" selection-start-column="28" selection-end-line="55" selection-end-column="28" />
+        <state relative-caret-position="594">
+          <caret line="99" column="13" lean-forward="true" selection-start-line="99" selection-start-column="13" selection-end-line="99" selection-end-column="13" />
           <folding>
             <element signature="e#124#252#0#PHP" />
-            <element signature="e#256#391#0#PHP" />
-            <element signature="e#395#648#0#PHP" />
+            <element signature="e#264#399#0#PHP" />
+            <element signature="e#411#1229#0#PHP" />
+            <element signature="e#1233#1928#0#PHP" />
+            <element signature="e#1875#2642#0#PHP" />
+            <element signature="e#2688#2714#0#PHP" />
+            <element signature="e#2967#3242#0#PHP" />
           </folding>
         </state>
       </provider>

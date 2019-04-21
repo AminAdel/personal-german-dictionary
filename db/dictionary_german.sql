@@ -3,7 +3,7 @@
 -- https://www.phpmyadmin.net/
 --
 -- Host: 127.0.0.1
--- Generation Time: Apr 19, 2019 at 10:32 PM
+-- Generation Time: Apr 21, 2019 at 01:37 PM
 -- Server version: 10.1.30-MariaDB
 -- PHP Version: 7.2.2
 
@@ -33,15 +33,6 @@ CREATE TABLE `groups` (
   `label` varchar(20) COLLATE utf8mb4_unicode_ci NOT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_unicode_ci;
 
---
--- Dumping data for table `groups`
---
-
-INSERT INTO `groups` (`id`, `label`) VALUES
-(1, '1-200'),
-(2, '201-500'),
-(3, '501-1000');
-
 -- --------------------------------------------------------
 
 --
@@ -62,7 +53,8 @@ INSERT INTO `types` (`id`, `label`) VALUES
 (2, 'pronoun'),
 (3, 'verb'),
 (4, 'adverb'),
-(5, 'adjective');
+(5, 'adjective'),
+(6, 'new-type');
 
 -- --------------------------------------------------------
 
@@ -79,15 +71,6 @@ CREATE TABLE `words` (
   `meaning` text COLLATE utf8mb4_unicode_ci,
   `examples` text COLLATE utf8mb4_unicode_ci
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_unicode_ci;
-
---
--- Dumping data for table `words`
---
-
-INSERT INTO `words` (`id`, `word_phrase`, `article`, `type_id`, `group_id`, `meaning`, `examples`) VALUES
-(1, 'ich', NULL, 0, 1, 'I', NULL),
-(2, 'du', NULL, 0, 1, 'you', NULL),
-(3, 'hund', 'der', 0, 1, 'dog', NULL);
 
 --
 -- Indexes for dumped tables
@@ -119,19 +102,19 @@ ALTER TABLE `words`
 -- AUTO_INCREMENT for table `groups`
 --
 ALTER TABLE `groups`
-  MODIFY `id` int(10) UNSIGNED NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=4;
+  MODIFY `id` int(10) UNSIGNED NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=5;
 
 --
 -- AUTO_INCREMENT for table `types`
 --
 ALTER TABLE `types`
-  MODIFY `id` int(10) UNSIGNED NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=6;
+  MODIFY `id` int(10) UNSIGNED NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=7;
 
 --
 -- AUTO_INCREMENT for table `words`
 --
 ALTER TABLE `words`
-  MODIFY `id` int(10) UNSIGNED NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=4;
+  MODIFY `id` int(10) UNSIGNED NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=5;
 COMMIT;
 
 /*!40101 SET CHARACTER_SET_CLIENT=@OLD_CHARACTER_SET_CLIENT */;
