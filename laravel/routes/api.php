@@ -3,7 +3,7 @@
 //header('Access-Control-Allow-Methods: GET, POST');
 //header("Access-Control-Allow-Headers: X-Requested-With");
 
-if ($_SERVER['REQUEST_METHOD'] === 'OPTIONS') {
+if (isset($_SERVER['REQUEST_METHOD']) && $_SERVER['REQUEST_METHOD'] === 'OPTIONS') {
 	header('Access-Control-Allow-Origin: *');
 	header('Access-Control-Allow-Methods: POST, GET, DELETE, PUT, PATCH, OPTIONS');
 	header('Access-Control-Allow-Headers: token, Content-Type');
