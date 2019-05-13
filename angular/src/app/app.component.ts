@@ -9,8 +9,8 @@ import { HttpClient } from '@angular/common/http';
 })
 export class AppComponent implements OnInit {
 	
-	// api_base_url = 'http://127.0.0.1/_AminAdel/personal-dictionary-german/laravel/public/api/'; // work
-	api_base_url = 'http://localhost/_github/personal-dictionary-german/laravel/public/api/'; // home
+	api_base_url = 'http://127.0.0.1/_AminAdel/personal-dictionary-german/laravel/public/api/'; // work
+	// api_base_url = 'http://localhost/_github/personal-dictionary-german/laravel/public/api/'; // home
 	
 	// ==================================================
 	

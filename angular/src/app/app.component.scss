@@ -20,9 +20,12 @@
 			}
 			
 			.form_create, .form_edit {
+				display: flex;
+				flex-wrap: wrap;
 				
 				.field_group {
 					margin-bottom: 15px;
+					width: 100%;
 					
 					.label {
 						margin-bottom: 5px;
@@ -38,6 +41,10 @@
 						&.type_new, &.group_new {
 							margin-top: 10px;
 						}
+					}
+					
+					&.w_half {
+						width: 50%;
 					}
 				}
 				

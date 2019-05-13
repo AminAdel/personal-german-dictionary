@@ -57,13 +57,22 @@
 				</div>
 				<div class="li_info">
 					<div class="form_edit">
-						<div class="field_group">
+						
+						<div class="field_group word_phrase">
 							<div class="label">Word or Phrase :</div>
 							<div class="field_con">
 								<input class="field phrase" type="text" [(ngModel)]="edit_phrase">
 							</div>
 						</div>
-						<div class="field_group">
+						
+						<div class="field_group meaning">
+							<div class="label">Meaning :</div>
+							<div class="field_con">
+								<input class="field meaning" type="text" [(ngModel)]="edit_meaning">
+							</div>
+						</div>
+						
+						<div class="field_group article w_half">
 							<div class="label">Article :</div>
 							<div class="field_con">
 								<select class="field article" [(ngModel)]="edit_article">
@@ -74,17 +83,20 @@
 								</select>
 							</div>
 						</div>
-						<div class="field_group">
+						
+						<div class="field_group type w_half">
 							<div class="label">Type :</div>
 							<div class="field_con">
 								<select class="field type" [(ngModel)]="edit_type">
+									<option value="null" selected>--</option>
 									<option value="{{ type.id }}" *ngFor="let type of types">{{ type.label }}</option>
 									<option value="_create_new_">-- create new type --</option>
 								</select>
 								<input class="field type_new" type="text" *ngIf="edit_type === '_create_new_'" [(ngModel)]="edit_type_new" placeholder="Create New Type">
 							</div>
 						</div>
-						<div class="field_group">
+						
+						<div class="field_group group">
 							<div class="label">Group :</div>
 							<div class="field_con">
 								<select class="field group" [(ngModel)]="edit_group">
@@ -94,18 +106,14 @@
 								<input class="field group_new" type="text" *ngIf="edit_group === '_create_new_'" [(ngModel)]="edit_group_new" placeholder="Create New Group">
 							</div>
 						</div>
-						<div class="field_group">
-							<div class="label">Meaning :</div>
-							<div class="field_con">
-								<input class="field meaning" type="text" [(ngModel)]="edit_meaning">
-							</div>
-						</div>
-						<div class="field_group">
+						
+						<div class="field_group examples">
 							<div class="label">Examples (separate by enter) :</div>
 							<div class="field_con">
 								<textarea class="field examples" rows="4" [(ngModel)]="edit_examples"></textarea>
 							</div>
 						</div>
+						
 						<div class="submit_con">
 							<div class="submit" (click)="onEdit()">Edit</div>
 						</div>
@@ -120,13 +128,22 @@
 		<div class="col sidebar">
 			
 			<div class="form_create">
-				<div class="field_group">
+				
+				<div class="field_group word_phrase">
 					<div class="label">Word or Phrase :</div>
 					<div class="field_con">
 						<input class="field phrase" type="text" [(ngModel)]="create_phrase">
 					</div>
 				</div>
-				<div class="field_group">
+				
+				<div class="field_group meaning">
+					<div class="label">Meaning :</div>
+					<div class="field_con">
+						<input class="field meaning" type="text" [(ngModel)]="create_meaning">
+					</div>
+				</div>
+				
+				<div class="field_group article w_half">
 					<div class="label">Article :</div>
 					<div class="field_con">
 						<select class="field article" [(ngModel)]="create_article">
@@ -137,17 +154,20 @@
 						</select>
 					</div>
 				</div>
-				<div class="field_group">
+				
+				<div class="field_group type w_half">
 					<div class="label">Type :</div>
 					<div class="field_con">
 						<select class="field type" [(ngModel)]="create_type">
+							<option value="null" selected>--</option>
 							<option value="{{ type.id }}" *ngFor="let type of types">{{ type.label }}</option>
 							<option value="_create_new_">-- create new type --</option>
 						</select>
 						<input class="field type_new" type="text" *ngIf="create_type === '_create_new_'" [(ngModel)]="create_type_new" placeholder="Create New Type">
 					</div>
 				</div>
-				<div class="field_group">
+				
+				<div class="field_group group">
 					<div class="label">Group :</div>
 					<div class="field_con">
 						<select class="field group" [(ngModel)]="create_group">
@@ -157,18 +177,14 @@
 						<input class="field group_new" type="text" *ngIf="create_group === '_create_new_'" [(ngModel)]="create_group_new" placeholder="Create New Group">
 					</div>
 				</div>
-				<div class="field_group">
-					<div class="label">Meaning :</div>
-					<div class="field_con">
-						<input class="field meaning" type="text" [(ngModel)]="create_meaning">
-					</div>
-				</div>
+				
 				<div class="field_group">
 					<div class="label">Examples (separate by enter) :</div>
 					<div class="field_con">
 						<textarea class="field examples" rows="4" [(ngModel)]="create_examples"></textarea>
 					</div>
 				</div>
+				
 				<div class="submit_con">
 					<div class="submit" (click)="onCreate()">Create</div>
 				</div>
